@@ -1,10 +1,10 @@
 import React from 'react'
 
-type Props = {}
+import styles from './Footer.module.css'
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
-    <footer>
+    <footer className={styles.footer}>
         <p>
             <span>
                 React + TS Todo
