@@ -10,14 +10,20 @@ const TaskList = ({taskList}: Props) => {
   
   const renderTaskList = () => {
     return taskList.map(({id, title, difficulty}) => (
-      <div key={id}>
-        <div>
+      <div key={id} className={styles.task}>
+        <div className={styles.details}>
           <h4>{title}</h4>
           <p>Dificuldade: {difficulty}</p>
         </div>
-        <div>
-          <BsFillPencilFill />
-          <BsFillTrashFill />          
+        <div className={styles.actions}>
+          <i>
+
+          <BsFillPencilFill  />
+          </i>
+          <i>
+
+          <BsFillTrashFill  />          
+          </i>
         </div>
       </div>
     ))
