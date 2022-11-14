@@ -5,7 +5,7 @@ import {BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 type Props = {
   taskList: ITask[];
   handleDelete(id: number): void
-  handleEdit():void
+  handleEdit(task: ITask):void
 }
 
 const TaskList = ({taskList, handleDelete, handleEdit}: Props) => {
@@ -18,7 +18,7 @@ const TaskList = ({taskList, handleDelete, handleEdit}: Props) => {
           <p>Dificuldade: {difficulty}</p>
         </div>
         <div className={styles.actions}>
-          <i onClick={() => handleEdit()}>
+          <i onClick={() => handleEdit({id, title, difficulty})}>
           <BsFillPencilFill  />
           </i>
           <i onClick={() => handleDelete(id)}>

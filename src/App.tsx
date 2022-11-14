@@ -10,6 +10,7 @@ import Modal from './components/Modal';
 function App() {
 
   const [taskList, setTaskList] = useState<ITask[]>([])
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null)
   const deleteTask = (id: number) => {
     setTaskList(
       taskList.filter((task) => task.id !== id)
@@ -25,15 +26,25 @@ function App() {
     }
   }
 
-  const editTask = ():void => {
-    hideOrShowModal(true)
+  const editTask = (task: ITask):void => {
+    hideOrShowModal(true);
+    setTaskToUpdate(task)
+
   }
 
 
 
   return (
     <div className="App">
-      <Modal children={<TaskForm btnText='Editar Tarefa' taskList={taskList} />}/>
+      <Modal 
+      children={
+      <TaskForm 
+      btnText='Editar Tarefa' 
+      taskList={taskList} 
+      task={taskToUpdate}
+      />
+      
+      }/>
       <Header />
       <main className={styles.main}>
         <div>
@@ -41,6 +52,7 @@ function App() {
           <TaskForm 
           taskList={taskList} 
           setTaskList={setTaskList} 
+          
           btnText="Criar Tarefa"
           />
         </div>
