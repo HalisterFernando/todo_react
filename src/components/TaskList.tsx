@@ -3,10 +3,11 @@ import {ITask} from '../interfaces/Task'
 import styles from './TaskList.module.css'
 import {BsFillPencilFill, BsFillTrashFill } from 'react-icons/bs'
 type Props = {
-  taskList: ITask[]
+  taskList: ITask[];
+  handleDelete(id: number): void
 }
 
-const TaskList = ({taskList}: Props) => {
+const TaskList = ({taskList, handleDelete}: Props) => {
   
   const renderTaskList = () => {
     return taskList.map(({id, title, difficulty}) => (
@@ -17,12 +18,12 @@ const TaskList = ({taskList}: Props) => {
         </div>
         <div className={styles.actions}>
           <i>
-
           <BsFillPencilFill  />
           </i>
           <i>
-
-          <BsFillTrashFill  />          
+          <BsFillTrashFill  
+          onClick={() => handleDelete(id)}
+          />          
           </i>
         </div>
       </div>

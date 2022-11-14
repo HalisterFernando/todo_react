@@ -9,6 +9,11 @@ import { ITask } from './interfaces/Task'
 function App() {
 
   const [taskList, setTaskList] = useState<ITask[]>([])
+  const deleteTask = (id: number) => {
+    setTaskList(
+      taskList.filter((task) => task.id !== id)
+    )
+  }
 
   return (
     <div className="App">
@@ -16,11 +21,15 @@ function App() {
       <main className={styles.main}>
         <div>
           <h2>O que você vai fazer?</h2>
-          <TaskForm taskList={taskList} setTaskList={setTaskList} btnText="Criar Tarefa"/>
+          <TaskForm 
+          taskList={taskList} 
+          setTaskList={setTaskList} 
+          btnText="Criar Tarefa"
+          />
         </div>
         <div>
           <h2>Sua tarefas</h2>
-          <TaskList taskList={taskList} />
+          <TaskList taskList={taskList} handleDelete={deleteTask} />
         </div>
       </main>
       <Footer />
